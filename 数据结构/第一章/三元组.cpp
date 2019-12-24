@@ -9,21 +9,21 @@
 typedef float ElemType;
 typedef int Status;
 typedef ElemType *Triplet;
-//ÉùÃ÷º¯Êı 
-Status InitTriplet(Triplet &T,ElemType v1,ElemType v2,ElemType v3);// ´´½¨ÈıÔª×é 
-Status DestroyTriplet(Triplet &T);//Ïú»ÙÈıÔª×é 
-Status Get(Triplet &T,Status i,ElemType &e);//È¡ÈıÔª×éµÄÒ»¸öÊı 
-Status Put(Triplet &T,Status i,ElemType e);//ÔÚÈıÔª×éÖĞ·ÅÒ»¸öÊı 
-Status IsAscending(Triplet T);//ÅĞ¶ÏÈıÔª×éÊÇ·ñÉıĞò 
-Status IsDescending(Triplet T);//ÅĞ¶ÏÈıÔª×éÊÇ·ñ½µĞò 
-Status Max(Triplet T,ElemType &e);//ÇóÈıÔª×éÖĞ×î´óÖµ 
-Status Min(Triplet T,ElemType &e);//ÇóÈıÔª×éÖĞ×îĞ¡Öµ 
+//å£°æ˜å‡½æ•° 
+Status InitTriplet(Triplet &T,ElemType v1,ElemType v2,ElemType v3);// åˆ›å»ºä¸‰å…ƒç»„ 
+Status DestroyTriplet(Triplet &T);//é”€æ¯ä¸‰å…ƒç»„ 
+Status Get(Triplet &T,Status i,ElemType &e);//å–ä¸‰å…ƒç»„çš„ä¸€ä¸ªæ•° 
+Status Put(Triplet &T,Status i,ElemType e);//åœ¨ä¸‰å…ƒç»„ä¸­æ”¾ä¸€ä¸ªæ•° 
+Status IsAscending(Triplet T);//åˆ¤æ–­ä¸‰å…ƒç»„æ˜¯å¦å‡åº 
+Status IsDescending(Triplet T);//åˆ¤æ–­ä¸‰å…ƒç»„æ˜¯å¦é™åº 
+Status Max(Triplet T,ElemType &e);//æ±‚ä¸‰å…ƒç»„ä¸­æœ€å¤§å€¼ 
+Status Min(Triplet T,ElemType &e);//æ±‚ä¸‰å…ƒç»„ä¸­æœ€å°å€¼ 
 
-//´´½¨ÈıÔª×é
+//åˆ›å»ºä¸‰å…ƒç»„
 Status InitTriplet(Triplet &T,ElemType v1,ElemType v2,ElemType v3)
 {
 	T=(ElemType*)malloc(3*sizeof(ElemType));
-	if(T==NULL)//ÅĞ¶ÏÊÇ·ñ·ÖÅä³É¹¦ 
+	if(T==NULL)//åˆ¤æ–­æ˜¯å¦åˆ†é…æˆåŠŸ 
 	{
 		exit(OVERFLOW);	
 	}
@@ -32,14 +32,14 @@ Status InitTriplet(Triplet &T,ElemType v1,ElemType v2,ElemType v3)
 	T[2]=v3;
 	return OK;
 } 
-//Ïú»ÙÈıÔª×é
+//é”€æ¯ä¸‰å…ƒç»„
 Status DestroyTriplet(Triplet &T)
 {
-	free(T);//ÏÈÊÍ·ÅÄÚ´æ 
+	free(T);//å…ˆé‡Šæ”¾å†…å­˜ 
 	T=NULL;
 	return OK; 
 }
-//È¡ÈıÔª×éµÄÒ»¸öÊı
+//å–ä¸‰å…ƒç»„çš„ä¸€ä¸ªæ•°
 Status Get(Triplet &T,Status i,ElemType &e)
 {
 	if(i<1||i>3)
@@ -52,7 +52,7 @@ Status Get(Triplet &T,Status i,ElemType &e)
 	}
 	return OK;
 } 
-//ÔÚÈıÔª×éÖĞ´æ·ÅÒ»¸öÊı
+//åœ¨ä¸‰å…ƒç»„ä¸­å­˜æ”¾ä¸€ä¸ªæ•°
 Status Put(Triplet &T,Status i,ElemType e)
 {
 	if(i<1||i>3)
@@ -65,23 +65,23 @@ Status Put(Triplet &T,Status i,ElemType e)
 	}
 	return OK;
 } 
-//ÅĞ¶ÏÈıÔª×éÊÇ·ñÉıĞò
+//åˆ¤æ–­ä¸‰å…ƒç»„æ˜¯å¦å‡åº
 Status IsAscending(Triplet T)
 {
 	return(T[0]<T[1])&&(T[1]<T[2]);
 }
-//ÅĞ¶ÏÈıÔª×éÊÇ·ñ½µĞò
+//åˆ¤æ–­ä¸‰å…ƒç»„æ˜¯å¦é™åº
 Status IsDescending(Triplet T)
 {
 	return(T[0]>T[1])&&(T[1]>T[2]);
 } 
-//Çó×î´óÖµ
+//æ±‚æœ€å¤§å€¼
 Status Max(Triplet T,ElemType &e)
 {
 	e=(T[0]>=T[1])?((T[0]>=T[2])?T[0]:T[2]):((T[1]>=T[2])?T[1]:T[2]);
 	return OK;
 } 
-//Çó×îĞ¡Öµ
+//æ±‚æœ€å°å€¼
 Status Min(Triplet T,ElemType &e)
 {
 	e=(T[0]<=T[1])?((T[0]<=T[2])?T[0]:T[2]):((T[1]<=T[2])?T[1]:T[2]);
@@ -95,9 +95,9 @@ int main(int argc, char** argv)
 	ElemType v1,v2,v3,e;
 	Status flag,i,x;
 	
-	printf("±¾³ÌĞò¿ÉÒÔÍê³ÉÒÔÏÂ¹¦ÄÜ£º\n");
-	printf("1.³õÊ¼»¯ÈıÔª×éT\n2.È¡ÈıÔª×éµÄÒ»¸ö·ÖÁ¿\n3.ÖØÖÃÈıÔª×éµÄÒ»¸ö·ÖÁ¿\n4.¼ì²âÊÇ·ñÎªÉıĞòº¯Êı\n5.¼ì²âÊÇ·ñÎª½µĞòº¯Êı\n6.Êä³ö×î´óÖµ\n7.Êä³ö×îĞ¡Öµ\n8.Ïú»ÙÈıÔª×é\n");
-	printf("ÇëÊäÈëÄãĞèÒªµÄ¹¦ÄÜ:\n");
+	printf("æœ¬ç¨‹åºå¯ä»¥å®Œæˆä»¥ä¸‹åŠŸèƒ½ï¼š\n");
+	printf("1.åˆå§‹åŒ–ä¸‰å…ƒç»„T\n2.å–ä¸‰å…ƒç»„çš„ä¸€ä¸ªåˆ†é‡\n3.é‡ç½®ä¸‰å…ƒç»„çš„ä¸€ä¸ªåˆ†é‡\n4.æ£€æµ‹æ˜¯å¦ä¸ºå‡åºå‡½æ•°\n5.æ£€æµ‹æ˜¯å¦ä¸ºé™åºå‡½æ•°\n6.è¾“å‡ºæœ€å¤§å€¼\n7.è¾“å‡ºæœ€å°å€¼\n8.é”€æ¯ä¸‰å…ƒç»„\n");
+	printf("è¯·è¾“å…¥ä½ éœ€è¦çš„åŠŸèƒ½:\n");
      
 	
 	
@@ -109,57 +109,61 @@ int main(int argc, char** argv)
     switch(x)
     {
     	case 1:{
-				printf("ÇëÊäÈë3¸öÊı×Ö´æÈëÊÇÈıÔª×éÄÚ:\n");
+				printf("è¯·è¾“å…¥3ä¸ªæ•°å­—å­˜å…¥æ˜¯ä¸‰å…ƒç»„å†…:\n");
 				scanf("%f%f%f",&v1,&v2,&v3);
 				flag=InitTriplet(T,v1,v2,v3);
 				if(flag==1)
 				{
-					printf("ÈıÔª×é³õÊ¼»¯³É¹¦ÈıÔª×éµÄÖµ·Ö±ğÎª%4.2f %4.2f %4.2f\n",T[0],T[1],T[2]);
+					printf("ä¸‰å…ƒç»„åˆå§‹åŒ–æˆåŠŸä¸‰å…ƒç»„çš„å€¼åˆ†åˆ«ä¸º%4.2f %4.2f %4.2f\n",T[0],T[1],T[2]);
 				}
 				};continue;
     	case 2:{
-				printf("ÇëÊäÈëÄãÏëÈ¡µ½ÈıÔª×éÖĞµÚ¼¸ºÅÔªËØµÄÖµ\n");
+				printf("è¯·è¾“å…¥ä½ æƒ³å–åˆ°ä¸‰å…ƒç»„ä¸­ç¬¬å‡ å·å…ƒç´ çš„å€¼\n");
 				scanf("%d",&i); 
 				flag=Get(T,i,e);
-				printf("µÚ%dºÅÔªËØµÄÖµÎª%4.2f\n",i,e);
+				printf("ç¬¬%då·å…ƒç´ çš„å€¼ä¸º%4.2f\n",i,e);
 				};continue;
     	case 3:{
-				printf("ÇëÊäÈëÄãÏëÒªÊäÈëµÄÎ»ÖÃºÍÊıÖµ:\n"); 
+				printf("è¯·è¾“å…¥ä½ æƒ³è¦è¾“å…¥çš„ä½ç½®å’Œæ•°å€¼:\n"); 
 				scanf("%d%f",&i,&e);
 				Put(T,i,e);
-				printf("ĞÂµÄÈıÔª×éµÄÖµÎª:%4.2f %4.2f %4.2f\n",T[0],T[1],T[2]);
+				printf("æ–°çš„ä¸‰å…ƒç»„çš„å€¼ä¸º:%4.2f %4.2f %4.2f\n",T[0],T[1],T[2]);
 				};continue;
         case 4:{
 				if(IsAscending(T))
 				{
-					printf("¸ÃÈıÔª×éÉıĞò\n");
+					printf("è¯¥ä¸‰å…ƒç»„å‡åº\n");
 				} 
+                                else
+                                {
+					printf("è¯¥ä¸‰å…ƒç»„ä¸å‡åº\n");
+                                }
 				};continue;
        	case 5:{	
 		   		if(IsDescending(T))
 				{
-					printf("¸ÃÈıÔª×é½µĞò\n");
+					printf("è¯¥ä¸‰å…ƒç»„é™åº\n");
 				} 
 				else
 				{
-					printf("¸ÃÈıÔª×é²»½µĞò\n");
+					printf("è¯¥ä¸‰å…ƒç»„ä¸é™åº\n");
 				}
 				};continue;
        	case 6:{
 		   		Max(T,e);
-				printf("¸ÃÈıÔª×éÖĞµÄ×î´óÖµÎª£º%4.2f\n",e);
+				printf("è¯¥ä¸‰å…ƒç»„ä¸­çš„æœ€å¤§å€¼ä¸ºï¼š%4.2f\n",e);
 				};continue;
    		case 7:{	
 		   		Min(T,e);
-				printf("¸ÃÈıÔª×éÖĞµÄ×î´óĞ¡ÖµÎª£º%4.2f\n",e); 
+				printf("è¯¥ä¸‰å…ƒç»„ä¸­çš„æœ€å¤§å°å€¼ä¸ºï¼š%4.2f\n",e); 
 				};continue;
 	    case 8:{
 				flag=DestroyTriplet(T);
-				printf("Ïú»ÙÈıÔª×éÊäÈë0:\n");
+				printf("é”€æ¯ä¸‰å…ƒç»„è¾“å…¥0:\n");
 				scanf("%d",&flag); 
 				if(flag==0)
 				{
-					printf("ÈıÔª×éÏú»Ù³É¹¦\n");
+					printf("ä¸‰å…ƒç»„é”€æ¯æˆåŠŸ\n");
 				}
 				};continue;    	
     }
